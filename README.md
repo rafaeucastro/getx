@@ -6,4 +6,8 @@ Uma aplicação em flutter usando o GetX
 
 - GetXController para controle de estado;
     - GetBuilder(): usado para criar a instância do meu objeto controller e também responsável por reconstruir os widgets quando dados na árvore forem atualizados.
-- Get.to() para rotas;
+    
+- GetMaterialApp usado para o navegação entre rotas;
+    - Get.to(MinhaPágina()): Navega para uma rota específica;
+    - Get.toNamed('/home'): Navegar para uma rota nomeada;
+    - GetPage(): usado para instanciar as minhas páginas;
