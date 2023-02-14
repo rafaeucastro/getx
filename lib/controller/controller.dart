@@ -5,15 +5,15 @@ class Controller extends GetxController {
 
   static Controller get to => Get.find();
 
-  int value = 0;
+  RxInt value = 0.obs;
 
   void increment() {
     value++;
-    update();
+    //update(); -not needed when using Rx e .obs
   }
 
   void decrement() {
     value--;
-    update();
+    //update(); -not needed when using Rx e .obs
   }
 }
