@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_example/second_screen.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("--MyApp builder");
-    return MaterialApp(
+    return GetMaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Usando getX"),
@@ -41,26 +42,37 @@ class MyApp extends StatelessWidget {
             builder: (_) {
               print("--GetBuilder builder");
               return Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                child: Column(
                   children: [
-                    IconButton(
-                        onPressed: _.decrement,
-                        icon: const Icon(
-                          Icons.minimize,
-                          size: 40,
-                        )),
-                    Text(
-                      Get.find<Controller>().value.toString(),
-                      style: const TextStyle(fontSize: 35),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: _.decrement,
+                          icon: const Icon(
+                            Icons.minimize,
+                            size: 40,
+                          ),
+                        ),
+                        Text(
+                          Get.find<Controller>().value.toString(),
+                          style: const TextStyle(fontSize: 35),
+                        ),
+                        IconButton(
+                          onPressed: controller.increment,
+                          icon: const Icon(
+                            Icons.add,
+                            size: 40,
+                          ),
+                        ),
+                      ],
                     ),
                     IconButton(
-                        onPressed: controller.increment,
-                        icon: const Icon(
-                          Icons.add,
-                          size: 40,
-                        )),
+                      onPressed: () =>
+                          Get.to(SecondScreen(), arguments: controller.value),
+                      icon: const Icon(Icons.next_plan_rounded),
+                    ),
                   ],
                 ),
               );
